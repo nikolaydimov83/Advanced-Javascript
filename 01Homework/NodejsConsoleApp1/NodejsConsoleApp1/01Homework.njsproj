@@ -13,7 +13,7 @@
     <ProjectGuid>53e38a12-6ce4-4b53-a61e-99a144f52c69</ProjectGuid>
     <ProjectHome>
     </ProjectHome>
-    <StartupFile>04AddingNumbersUsingFunctions.js</StartupFile>
+    <StartupFile>07DOMManipulation.js</StartupFile>
     <StartWebBrowser>False</StartWebBrowser>
     <SearchPath>
     </SearchPath>
@@ -36,6 +36,7 @@
     <Compile Include="05FunctionComposition.js" />
     <Compile Include="03TestTheValueOfThis.js" />
     <Compile Include="06DOMTraversal.js" />
+    <Compile Include="07DOMManipulation.js" />
     <Content Include="index.html" />
     <Content Include="package.json" />
     <Content Include="README.md" />
