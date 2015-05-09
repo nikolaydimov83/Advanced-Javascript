@@ -68,6 +68,19 @@
                     }
                 }
               }
+        },
+        addHandler: function addHandler(element, eventType, eventHandler) {
+            var elements;
+            if (typeof element === "string") {
+                elements = document.querySelectorAll(element);
+                for (var i = 0; i < elements.length; i++) {
+                    elements[i].addEventListener(eventType, eventHandler);
+                }
+            }
+           else {
+                element.addEventListener(eventType, eventHandler);
+            }
+            
         }
     };
 }();
@@ -78,4 +91,5 @@ var ulElement = document.getElementById("BirdsWer");
 domManipulation.appendChild(liElement, ".birds-list");
 domManipulation.appendChild(liElement, ulElement);
 domManipulation.removeChild("ul.birds-list", "li:first-child");
+domManipulation.addHandler("li.bird", 'click', function () { alert("I'm a bird!") });
 
