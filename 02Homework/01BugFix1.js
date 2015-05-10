@@ -30,11 +30,14 @@ var Person = (function () {
     }
 
     Person.prototype = {
-        fullname: function () {
-            return this._firstName + this._lastName;
+        fullName: function () {
+            return this._firstName +" "+ this._lastName;
         },
-        calcPerimeter: function () {
-            return 2 * this._width + 2 * this._height;
+        firstName: function () {
+            return this._firstName;
+        },
+        lastName: function () {
+            return this._lastName;
         }
     };
 
@@ -43,11 +46,10 @@ var Person = (function () {
 
 
 
-
-
 var peter;
 peter = new Person("Peter", "Jackson");
+
 console.log(peter.fullName());
-console.log(peter.firstName);
-console.log(peter.lastName);
+console.log(peter.firstName());
+console.log(peter.lastName());
 
