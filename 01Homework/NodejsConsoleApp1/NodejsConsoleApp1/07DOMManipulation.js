@@ -85,6 +85,8 @@
     };
 }();
 
+
+
 var liElement = document.createElement("li");
 var ulElement = document.getElementById("BirdsWer");
 // Appends a list item to ul.birds-list
