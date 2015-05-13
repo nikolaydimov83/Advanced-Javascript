@@ -14,7 +14,7 @@ var Vector = (function () {
 
     Vector.prototype = {
         getVector: function () {
-            var vectorAsArray3DNaming= new Array();
+                var vectorAsArray3DNaming= new Array();
             for (var i=0;i<this._numberofDimensions;i++){
                 var stringA=(i+1)+"d";
                vectorAsArray3DNaming[stringA]=this[stringA];
@@ -99,7 +99,7 @@ console.log(vec);
 var vec1=new Vector(a);
 var vec2 =vec.add(vec1);
 var vec3=vec.substract(vec1);
-
+console.log("===================");
 console.log(vec2);
 console.log(vec3);
 console.log(vec1.dot(vec1));
