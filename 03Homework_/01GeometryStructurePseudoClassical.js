@@ -1,5 +1,5 @@
 /**
- * Created by User on 14.5.2015 ã..
+ * Created by User on 14.5.2015 ï¿½..
  */
 
 Object.prototype.extends = function (parent) {
@@ -15,8 +15,22 @@ if (!Object.create) {
     };
 };
 var Shapes = (function() {
+    function checkCoordinateValidity(arguments, requiredProperties){
+        for (var i=0;i<requiredProperties;i++){
+            if (typeof arguments[i]==='undefined'||typeof arguments[i]!='number'){
+                throw new Error("Coordinate cannot be null")
+            }
+
+        }
+
+    }
+    function checkValidHexNumber(number){
+        var result  = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(number)
+        return result;
+    }
     var Point = (function () {
         function Point(x, y) {
+            checkCoordinateValidity(Point.arguments,Point.length);
             this._x=x;
             this._y=y;
         }
@@ -31,10 +45,12 @@ var Shapes = (function() {
                 return this._y;
             },
             setX: function (x) {
+                checkCoordinateValidity(Point.prototype.setX.arguments,Point.prototype.setX.length);
                 this._x=x;
                 return this;
             },
             setY: function (y) {
+                checkCoordinateValidity(Point.prototype.setY.arguments,Point.prototype.setY.length);
                 this._y=y;
                 return this
             }
@@ -45,7 +61,10 @@ var Shapes = (function() {
 
     var Shape=(function () {
         function Shape(pointA,color) {
-            this._pointA=point;
+            if (checkValidHexNumber(color)===false){
+                throw new Error("Invalid color entered");
+            }
+            this._pointA=pointA;
             this._color=color;
         }
 
@@ -209,13 +228,15 @@ var Shapes = (function() {
 
 
 var point = new Shapes.Point(10,5);
+point.setX(16);
+console.log(point);
 var point1 = new Shapes.Point(15,20);
 var point2 = new Shapes.Point(25,25);
-var shape = new Shapes.Shape(point,"black");
-var circle = new Shapes.Circle(point,"blue",15);
-var rectangle =new Shapes.Rectangle(point,"green",15,20);
-var triangle = new Shapes.Triangle(point, point1, point2,"red");
-var line = new Shapes.Line(point1,point2,"purple");
+var shape = new Shapes.Shape(point,"#aabbcc");
+var circle = new Shapes.Circle(point,"#aabbcc",15);
+var rectangle =new Shapes.Rectangle(point,"#aabbcc",15,20);
+var triangle = new Shapes.Triangle(point, point1, point2,"#aabbcc");
+var line = new Shapes.Line(point1,point2,"#aabbcc");
 
 console.log(line);
 console.log(line.toString());
