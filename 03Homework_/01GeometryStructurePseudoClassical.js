@@ -24,9 +24,17 @@ var Shapes = (function() {
         }
 
     }
+    function isPoint(point){
+        if ((point instanceof Point)===false){
+            throw new Error("Invalid entry. Point is expected.");
+        }
+
+    }
     function checkValidHexNumber(number){
-        var result  = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(number)
-        return result;
+        var result  = /(^#[0-9A-F]{6}$)|(^#[0-9A-F]{3}$)/i.test(number);
+        if (result===false){
+            throw new Error("Invalid color entered");
+        }
     }
     var Point = (function () {
         function Point(x, y) {
@@ -61,9 +69,8 @@ var Shapes = (function() {
 
     var Shape=(function () {
         function Shape(pointA,color) {
-            if (checkValidHexNumber(color)===false){
-                throw new Error("Invalid color entered");
-            }
+           checkValidHexNumber(color);
+            isPoint(pointA);
             this._pointA=pointA;
             this._color=color;
         }
@@ -79,19 +86,29 @@ var Shapes = (function() {
             getColor: function () {
                 return this._color;
             },
-            setPointA: function (point) {
-                this._pointA=point;
+            setPointA: function (pointA) {
+                isPoint(pointA);
+                this._pointA=pointA;
                 return this;
             },
-            setColor: function (point) {
-                this._color=point;
+            setColor: function (color) {
+                checkValidHexNumber(color);
+                this._color=color;
                 return this;
             }
         };
         return Shape;
     }());
+
+    function checkValidNumberEntry(radius) {
+        if (radius < 0 || (typeof radius != 'number')) {
+            throw new Error("Argument must be number > 0");
+        }
+    }
+
     var Circle=(function(){
         function Circle(pointO,color, radius){
+            checkValidNumberEntry(radius);
         Shape.call(this,pointO,color);
         this._radius=radius
         }
@@ -144,6 +161,8 @@ var Shapes = (function() {
 
     var Triangle=(function(){
         function Triangle(pointA, pointB, pointC, color){
+            isPoint(pointB);
+            isPoint(pointC);
             Shape.call(this,pointA,color);
             this._pointB=pointB;
             this._pointC=pointC;
@@ -155,6 +174,7 @@ var Shapes = (function() {
                 return parentToString + " pointB: "+this._pointB+" pointC:"+this._pointC;
             },
             setPointB: function(pointB){
+                isPoint(pointB);
                 this._pointB=pointB;
                 return this;
             },
@@ -162,6 +182,7 @@ var Shapes = (function() {
                 return this._pointB;
             },
             setPointC: function(pointC){
+                isPoint(pointC);
                 this._pointC=pointC;
                 return this;
             },
@@ -174,6 +195,7 @@ var Shapes = (function() {
 
     var Line=(function(){
         function Line(pointA, pointB, color){
+            isPoint(pointB);
             Shape.call(this,pointA,color);
             this._pointB=pointB;
         }
@@ -184,6 +206,7 @@ var Shapes = (function() {
                 return parentToString + " pointB: "+this._pointB;
             },
             setPointB: function(pointB){
+                isPoint(pointB);
                 this._pointB=pointB;
                 return this;
             },
@@ -196,6 +219,7 @@ var Shapes = (function() {
 
     var Segment=(function(){
         function Segment(pointA, pointB, color){
+            isPoint(pointB);
             Shape.call(this,pointA,color);
             this._pointB=pointB;
         }
@@ -206,6 +230,7 @@ var Shapes = (function() {
                 return parentToString + " pointB: "+this._pointB;
             },
             setPointB: function(pointB){
+                isPoint(pointB);
                 this._pointB=pointB;
                 return this;
             },
@@ -233,7 +258,7 @@ console.log(point);
 var point1 = new Shapes.Point(15,20);
 var point2 = new Shapes.Point(25,25);
 var shape = new Shapes.Shape(point,"#aabbcc");
-var circle = new Shapes.Circle(point,"#aabbcc",15);
+var circle = new Shapes.Circle(point,"#aabbcc",10);
 var rectangle =new Shapes.Rectangle(point,"#aabbcc",15,20);
 var triangle = new Shapes.Triangle(point, point1, point2,"#aabbcc");
 var line = new Shapes.Line(point1,point2,"#aabbcc");
