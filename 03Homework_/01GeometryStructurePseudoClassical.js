@@ -2,11 +2,6 @@
  * Created by User on 14.5.2015 �..
  */
 
-Object.prototype.extends = function (parent) {
-    this.prototype = Object.create(parent.prototype);
-    this.prototype.constructor = this;
-}
-
 if (!Object.create) {
     Object.create = function (proto) {
         function F() {};
@@ -14,7 +9,15 @@ if (!Object.create) {
         return new F;
     };
 };
-var Shapes = (function() {
+
+Object.prototype.extends = function (parent) {
+    this.prototype = Object.create(parent.prototype);
+    this.prototype.constructor = this;
+}
+
+
+
+(function() {
     function checkCoordinateValidity(arguments, requiredProperties){
         for (var i=0;i<requiredProperties;i++){
             if (typeof arguments[i]==='undefined'||typeof arguments[i]!='number'){
@@ -100,11 +103,7 @@ var Shapes = (function() {
         return Shape;
     }());
 
-    function checkValidNumberEntry(radius) {
-        if (radius < 0 || (typeof radius != 'number')) {
-            throw new Error("Argument must be number > 0");
-        }
-    }
+
 
     var Circle=(function(){
         function Circle(pointO,color, radius){
@@ -252,16 +251,16 @@ var Shapes = (function() {
 }());
 
 
-var point = new Shapes.Point(10,5);
-point.setX(16);
+var point = new shapes.Point(10,5);
+point.setX(16,20);
 console.log(point);
-var point1 = new Shapes.Point(15,20);
-var point2 = new Shapes.Point(25,25);
-var shape = new Shapes.Shape(point,"#aabbcc");
-var circle = new Shapes.Circle(point,"#aabbcc",10);
-var rectangle =new Shapes.Rectangle(point,"#aabbcc",15,20);
-var triangle = new Shapes.Triangle(point, point1, point2,"#aabbcc");
-var line = new Shapes.Line(point1,point2,"#aabbcc");
+var point1 = new shapes.Point(15,20);
+var point2 = new shapes.Point(25,25);
+var shape = new shapes.Shape(point,"#aabbcc");
+var circle = new shapes.Circle(point,"#aabbcc",10);
+var rectangle =new shapes.Rectangle(point,"#aabbcc",15,20);
+var triangle = new shapes.Triangle(point, point1, point2,"#aabbcc");
+var line = new shapes.Line(point1,point2,"#aabbcc");
 
 console.log(line);
 console.log(line.toString());

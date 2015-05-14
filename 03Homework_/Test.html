@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="Extension.js"></script>
+<script src="PrivateEntryCheckFunctions.js"></script>
+<script src="Point.js"></script>
+<script src = "Shape.js"></script>
+<script src="Circle.js"></script>
+<script src="Line.js"></script>
+
+<script src="Rectangle.js"></script>
+<script src="Segment.js"></script>
+
+<script src = "Triangle.js"></script>
+
+<script>
+
+    var point = new shapes.Point(10,5);
+    point.setX(16,20);
+    console.log(point);
+
+    var point1 = new shapes.Point(15,20);
+    var point2 = new shapes.Point(25,25);
+    var shape = new shapes.Shape(point,"#aabbcc");
+    var circle = new shapes.Circle(point,"#aabbcc",10);
+    var rectangle =new shapes.Rectangle(point,"#aabbcc",15,20);
+    var triangle = new shapes.Triangle(point, point1, point2,"#aabbcc");
+    var line = new shapes.Line(point1,point2,"#aabbcc");
+
+    console.log(line);
+    console.log(line.toString());
+    console.log(triangle);
+    console.log(triangle.toString());
+    console.log(rectangle);
+    console.log(rectangle.toString());
+    circle.setRadius(20);
+    console.log((circle));
+    console.log(point.toString());
+    console.log(shape.toString());
+    console.log(circle.toString());
+</script>
+</body>
+</html>
