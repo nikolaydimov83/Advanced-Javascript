@@ -5,7 +5,21 @@
     <title></title>
 </head>
 <body>
-    <form method="post" action="path/to/some-script.php">
+<script src="Extension.js"></script>
+<script src="PrivateEntryCheckFunctions.js"></script>
+<script src="Point.js"></script>
+<script src = "Shape.js"></script>
+<script src="Circle.js"></script>
+<script src="Line.js"></script>
+
+<script src="Rectangle.js"></script>
+<script src="Segment.js"></script>
+
+<script src = "Triangle.js"></script>
+
+
+<canvas id="canvas" width="700" height="700"></canvas>
+    <form method="post">
 
         <select name="geometric-shape" id="geometric-shape">
             <option value="circle">Circle</option>
@@ -15,7 +29,7 @@
             <option value="triangle">Triangle</option>
         </select>
 
-        <input name="backgroundColor" type="color" />
+        <input name="color" type="color" id="color"/>
 
         <fieldset>
             <legend>Shape details</legend>
@@ -55,10 +69,11 @@
 
         <input type="button" value="Arrow up" />
         <input type="button" value="Arrow down" />
-        <input type="button" value="-" />
+        <input type="button" value="-" id="-"/>
 
-        <input type="submit">
+        <input type="submit" id="submit">
 
     </form>
+<script src = "CanvasGeometryApi.js"></script>
 </body>
 </html>
