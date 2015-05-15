@@ -33,6 +33,17 @@ var shapes = shapes||{};
         },
         getPointC: function(){
             return this._pointC;
+        },
+        draw: function draw(elementToDrawOn){
+            var ctx=shapes.Shape.prototype.draw.call(this, elementToDrawOn);
+            ctx.beginPath();
+            ctx.moveTo(this._pointA._x,this._pointA._y);
+            ctx.lineTo(this._pointB._x,this._pointB._y);
+            ctx.lineTo(this._pointC._x,this._pointC._y);
+            ctx.lineTo(this._pointA._x,this._pointA._y);
+            ctx.fill();
+            return ctx;
+
         }
     }
     shapes.Triangle=Triangle;

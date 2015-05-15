@@ -23,7 +23,20 @@ var shapes = shapes||{};
             checkFunctions.checkValidNumberEntry(radius);
             this._radius=radius;
             return this;
+        },
+        draw: function draw(elementToDrawOn){
+            var ctx=shapes.Shape.prototype.draw.call(this, elementToDrawOn);
+            ctx.beginPath();
+            ctx.arc(this._pointA._x,this._pointA._y,this._radius,0,2*Math.PI);
+            ctx.fill();
+            ctx.closePath();
+            return ctx;
+
         }
     }
+
     shapes.Circle=Circle;
 }(shapes));
+
+
+

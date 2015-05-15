@@ -33,7 +33,15 @@ var shapes = shapes||{};
         },
         getHeigth: function(){
             return this._width;
+        },
+        draw: function draw(elementToDrawOn){
+            var ctx=shapes.Shape.prototype.draw.call(this, elementToDrawOn);
+                ctx.fillRect (this._pointA._x, this._pointA._y, this._width, this._heigth);
+            return ctx;
+
         }
     }
     shapes.Rectangle=Rectangle;
 }(shapes));
+
+

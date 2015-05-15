@@ -17,20 +17,29 @@
 
 <script src = "Triangle.js"></script>
 
+<canvas id="canvas" width="700" height="700"></canvas>
+
 <script>
 
-    var point = new shapes.Point(10,5);
+
+
+    var point = new shapes.Point(5,5);
     point.setX(16,20);
     console.log(point);
 
-    var point1 = new shapes.Point(15,20);
-    var point2 = new shapes.Point(25,25);
+    var point1 = new shapes.Point(0,100);
+    var point2 = new shapes.Point(300,300);
     var shape = new shapes.Shape(point,"#aabbcc");
-    var circle = new shapes.Circle(point,"#aabbcc",10);
-    var rectangle =new shapes.Rectangle(point,"#aabbcc",15,20);
+    var circle = new shapes.Circle(point2,"#aabbcc",250);
+
+    var rectangle =new shapes.Rectangle(point,"#aaffbb",300,100);
+    rectangle.draw("canvas");
+    circle.draw("canvas");
     var triangle = new shapes.Triangle(point, point1, point2,"#aabbcc");
     var line = new shapes.Line(point1,point2,"#aabbcc");
 
+    line.draw("canvas");
+    triangle.draw("canvas")
     console.log(line);
     console.log(line.toString());
     console.log(triangle);

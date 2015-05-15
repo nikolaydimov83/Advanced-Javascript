@@ -23,6 +23,15 @@ var shapes = shapes||{};
         },
         getPointB: function(){
             return this._pointB;
+        },
+        draw: function draw(elementToDrawOn){
+            var ctx=shapes.Shape.prototype.draw.call(this, elementToDrawOn);
+            ctx.beginPath();
+            ctx.moveTo(this._pointA._x,this._pointA._y);
+            ctx.lineTo(this._pointB._x,this._pointB._y);
+            ctx.stroke();
+            return ctx;
+
         }
     }
     shapes.Segment=Segment;

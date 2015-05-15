@@ -32,7 +32,16 @@ var shapes = shapes||{};
             checkFunctions.checkValidHexNumber(color);
             this._color=color;
             return this;
+        },
+        draw: function (idOfElementToDrawOn) {
+        var canvas = document.getElementById(idOfElementToDrawOn);
+        if (canvas.getContext) {
+            var ctx = canvas.getContext("2d");
+            ctx.fillStyle = this._color;
+            return ctx;
+
         }
+    }
     };
     shapes.Shape=Shape;
 }(shapes));
