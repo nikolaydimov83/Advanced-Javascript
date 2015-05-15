@@ -7,12 +7,57 @@
 <body>
     <form method="post" action="path/to/some-script.php">
 
-        <select id="geometric-shape">
+        <select name="geometric-shape" id="geometric-shape">
             <option value="circle">Circle</option>
-            <option value="Value 2" selected="selected">Female</option>
-            <option value="Value 3">Other</option>
+            <option value="line" selected="selected">Line</option>
+            <option value="rectangle">Rectangle</option>
+            <option value="segment">Segment</option>
+            <option value="triangle">Triangle</option>
         </select>
 
+        <input name="backgroundColor" type="color" />
+
+        <fieldset>
+            <legend>Shape details</legend>
+
+            <label for="pointA._x">Point A: X</label>
+            <input type="text" id="pointA._x" />
+            <label for="pointA._y">Point A: Y</label>
+            <input type="text" id="pointA._y" />
+
+            <label for="pointB._x">Point B: X</label>
+            <input type="text" id="pointB._x" />
+
+            <label for="pointB._y">Point B: Y</label>
+            <input type="text" id="pointB._y" />
+
+            <label for="pointC._x">Point C: X</label>
+            <input type="text" id="pointC._x" />
+            <label for="pointC._y">Point C: Y</label>
+            <input type="text" id="pointC._y" />
+
+            <label for="width">Width</label>
+            <input type="text" id="width" />
+            <label for="height">Height</label>
+            <input type="text" id="height" />
+            <label for="radius">Radius</label>
+            <input type="text" id="radius" />
+        </fieldset>
+
+        <fieldset>
+            <label for="generated-figures">Generated Figures</label>
+            <select name="generated-figures" id="generated-figures" multiple="multiple">
+                <option value="202">mouse</option>
+                <option value="171">sound speakers</option>
+                <option value="146" selected="selected">keyboard</option>
+            </select>
+        </fieldset>
+
+        <input type="button" value="Arrow up" />
+        <input type="button" value="Arrow down" />
+        <input type="button" value="-" />
+
+        <input type="submit">
 
     </form>
 </body>
