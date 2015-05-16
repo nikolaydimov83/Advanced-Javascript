@@ -4,7 +4,7 @@
 
 var shapeElementsParser = shapeElementsParser||{};
 
-(function(context){
+(function(shapeElementsParser){
     function ProcessedForm(pointAx,pointAy,pointBx,pointBy,pointCx,pointCy,radius,figureColor,width,height){
         this._pointAx=pointAx;
         this._pointAy=pointAy;
@@ -22,7 +22,6 @@ var shapeElementsParser = shapeElementsParser||{};
         this._height=height;
 
     }
-
     ProcessedForm.prototype={
         toString: function () {
 
@@ -91,7 +90,7 @@ var shapeElementsParser = shapeElementsParser||{};
             return this;
         },
         getHeight: function(){
-            return this._heigth;
+            return this._height;
         },
         setHeight: function(height){
             this._height=height;
@@ -99,5 +98,7 @@ var shapeElementsParser = shapeElementsParser||{};
         }
 
     }
-    context.ProcessedForm=ProcessedForm;
+    shapeElementsParser.ProcessedForm=ProcessedForm;
 }(shapeElementsParser));
+
+
