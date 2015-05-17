@@ -52,6 +52,31 @@ var formsSubmitted=[];
         }
         return arrayToDrawIn;
     }
+    HandlerAPI.removeFiguresFromArray=function removeFiguresFromArray(arrayToDrawIn){
+
+        var generatedFiguresSelectTag = document.getElementById("generated-figures");
+        var selectedValue = generatedFiguresSelectTag.options[generatedFiguresSelectTag.selectedIndex];
+        if (selectedValue.selectedIndex!=-1){
+            arrayToDrawIn.splice(parseFloat(selectedValue.value),1);
+        }
+
+
+        return arrayToDrawIn;
+    }
+    HandlerAPI.moveUpFiguresInArray=function changeFiguresInArray(arrayToDrawIn){
+
+        var generatedFiguresSelectTag = document.getElementById("generated-figures");
+        var selectedValue = generatedFiguresSelectTag.options[generatedFiguresSelectTag.selectedIndex];
+        if (selectedValue.selectedIndex!=-1||parseFloat(selectedValue.value>0)){
+            var b = arrayToDrawIn[parseFloat(selectedValue.value)];
+            arrayToDrawIn[parseFloat(selectedValue.value)] = arrayToDrawIn[parseFloat(selectedValue.value)-1];
+            arrayToDrawIn[parseFloat(selectedValue.value)-1] = b;
+
+        }
+
+
+        return arrayToDrawIn;
+    }
     HandlerAPI.prototype={
         redrawAPI: function redrawAPI(){
             function changeLabelVisibility(element) {
