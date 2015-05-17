@@ -11,6 +11,47 @@ var formsSubmitted=[];
         var form1=this._form;
 
     }
+    HandlerAPI.addFiguresInArray=function addFiguresInArray(formsSubmitted,arrayToDrawIn){
+        var formToCreateShapeFrom=formsSubmitted[formsSubmitted.length-1];
+        switch(formToCreateShapeFrom._figureType) {
+            case "circle":
+                var figure = new shapes.Circle(new shapes.Point(formToCreateShapeFrom._pointAx,formToCreateShapeFrom._pointAy),
+                    formToCreateShapeFrom._figureColor,formToCreateShapeFrom._radius);
+                arrayToDrawIn.push(figure);
+                break;
+            case "triangle":
+                pointA=new shapes.Point(formToCreateShapeFrom._pointAx,formToCreateShapeFrom._pointAy);
+                pointB=new shapes.Point(formToCreateShapeFrom._pointBx,formToCreateShapeFrom._pointBy);
+                pointC=new shapes.Point(formToCreateShapeFrom._pointCx,formToCreateShapeFrom._pointCy);
+                var figure = new shapes.Triangle(pointA,pointB,pointC,formToCreateShapeFrom._figureColor);
+                arrayToDrawIn.push(figure);
+                break;
+            case "line":
+                pointA=new shapes.Point(formToCreateShapeFrom._pointAx,formToCreateShapeFrom._pointAy);
+                pointB=new shapes.Point(formToCreateShapeFrom._pointBx,formToCreateShapeFrom._pointBy);
+                var figure = new shapes.Line(pointA,pointB,formToCreateShapeFrom._figureColor);
+                arrayToDrawIn.push(figure);
+                break;
+            case "point":
+                //to be implemented
+                break;
+            case "rectangle":
+                pointA=new shapes.Point(formToCreateShapeFrom._pointAx,formToCreateShapeFrom._pointAy);
+                var figure = new shapes.Rectangle(pointA,formToCreateShapeFrom._figureColor,
+                    formToCreateShapeFrom._width,
+                    formToCreateShapeFrom._height);
+                arrayToDrawIn.push(figure);
+                break;
+            case "segment":
+                pointA=new shapes.Point(formToCreateShapeFrom._pointAx,formToCreateShapeFrom._pointAy);
+                pointB=new shapes.Point(formToCreateShapeFrom._pointBx,formToCreateShapeFrom._pointBy);
+                var figure = new shapes.Segment(pointA,pointB,formToCreateShapeFrom._figureColor);
+                arrayToDrawIn.push(figure);
+                break;
+            default:
+        }
+        return arrayToDrawIn;
+    }
     HandlerAPI.prototype={
         redrawAPI: function redrawAPI(){
             function changeLabelVisibility(element) {
@@ -94,11 +135,13 @@ var formsSubmitted=[];
 
             var width=parseFloat(document.getElementById("width").value);
             var height=parseFloat(document.getElementById("height").value);
+            var figureType = document.getElementById("geometric-shape").value
 
-            formsSubmitted.push(new shapeElementsParser.ProcessedForm(pointAx,pointAy,pointBx,pointBy,pointCx,pointCy,radius,figureColor,width,height));
+            formsSubmitted.push(new shapeElementsParser.ProcessedForm(pointAx,pointAy,pointBx,pointBy,pointCx,pointCy,radius,figureColor,width,height,figureType));
 
 
         }
+
     }
 
     handlerAPI.HandlerAPI=HandlerAPI;

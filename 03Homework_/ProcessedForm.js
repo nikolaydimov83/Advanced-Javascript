@@ -5,7 +5,7 @@
 var shapeElementsParser = shapeElementsParser||{};
 
 (function(shapeElementsParser){
-    function ProcessedForm(pointAx,pointAy,pointBx,pointBy,pointCx,pointCy,radius,figureColor,width,height){
+    function ProcessedForm(pointAx,pointAy,pointBx,pointBy,pointCx,pointCy,radius,figureColor,width,height,figureType){
         this._pointAx=pointAx;
         this._pointAy=pointAy;
 
@@ -20,6 +20,7 @@ var shapeElementsParser = shapeElementsParser||{};
 
         this._width=width;
         this._height=height;
+        this._figureType=figureType;
 
     }
     ProcessedForm.prototype={
