@@ -7,8 +7,8 @@ var checkFunctions = checkFunctions||{};
 (function(checkFunctions) {
     function checkCoordinateValidity(arguments, requiredProperties){
         for (var i=0;i<requiredProperties;i++){
-            if (typeof arguments[i]==='undefined'||typeof arguments[i]!='number'){
-                throw new Error("Coordinate cannot be null")
+            if (typeof arguments[i]!='number'||arguments[i]<0||arguments[i]==null||isNaN(arguments[i])){
+                throw new Error("Coordinate cannot be bellow zero or null")
             }
 
         }
@@ -22,7 +22,7 @@ var checkFunctions = checkFunctions||{};
     }
 
     function checkValidNumberEntry(radius) {
-        if (radius < 0 || (typeof radius != 'number')) {
+        if (radius < 0 || (typeof radius != 'number')||radius==null||radius===NaN) {
             throw new Error("Argument must be number > 0");
         }
     }

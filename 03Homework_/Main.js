@@ -6,11 +6,14 @@ var h=new handlerAPI.HandlerAPI("dfsddgdsfgsfd");
 var arrayOfFigures=[];
 document.getElementById("geometric-shape").onchange=h.redrawAPI;
 document.getElementById("-").addEventListener('click', h.processForm);
+document.getElementById("-").addEventListener('click',addFiguresInCanvasWrapped);
 document.getElementById("-").addEventListener('click',drawOnCanvasWrapped);
 document.getElementById("remove").addEventListener('click',removeFromCanvasWrapped);
 document.getElementById("remove").addEventListener('click',drawOnCanvasWrapped);
 document.getElementById("arrow-up").addEventListener('click',moveUpFiguresInCanvasWrapped);
 document.getElementById("arrow-up").addEventListener('click',drawOnCanvasWrapped);
+document.getElementById("arrow-down").addEventListener('click',moveDownFiguresInCanvasWrapped);
+document.getElementById("arrow-down").addEventListener('click',drawOnCanvasWrapped);
 
 function removeFromCanvasWrapped(){
     arrayOfFigures=handlerAPI.HandlerAPI.removeFiguresFromArray(arrayOfFigures);
@@ -18,6 +21,14 @@ function removeFromCanvasWrapped(){
 
 function moveUpFiguresInCanvasWrapped(){
     handlerAPI.HandlerAPI.moveUpFiguresInArray(arrayOfFigures);
+}
+
+function moveDownFiguresInCanvasWrapped(){
+    handlerAPI.HandlerAPI.moveDownFiguresInArray(arrayOfFigures);
+}
+
+function addFiguresInCanvasWrapped(){
+    arrayOfFigures=handlerAPI.HandlerAPI.addFiguresInArray(formsSubmitted,arrayOfFigures);
 }
 
 function drawOnCanvasWrapped(){
@@ -29,7 +40,7 @@ function drawOnCanvasWrapped(){
     for (index in select) {
         select.options[index] = null;
     }
-    arrayOfFigures=handlerAPI.HandlerAPI.addFiguresInArray(formsSubmitted,arrayOfFigures);
+
     for (var i = 0; i < arrayOfFigures.length; i++) {
         arrayOfFigures[i].draw("canvas");
     }

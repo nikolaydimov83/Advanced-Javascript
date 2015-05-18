@@ -13,7 +13,8 @@ var formsSubmitted=[];
     }
     HandlerAPI.addFiguresInArray=function addFiguresInArray(formsSubmitted,arrayToDrawIn){
         var formToCreateShapeFrom=formsSubmitted[formsSubmitted.length-1];
-        switch(formToCreateShapeFrom._figureType) {
+        try{
+            switch(formToCreateShapeFrom._figureType) {
             case "circle":
                 var figure = new shapes.Circle(new shapes.Point(formToCreateShapeFrom._pointAx,formToCreateShapeFrom._pointAy),
                     formToCreateShapeFrom._figureColor,formToCreateShapeFrom._radius);
@@ -49,28 +50,49 @@ var formsSubmitted=[];
                 arrayToDrawIn.push(figure);
                 break;
             default:
+            }
         }
+        catch(err) {
+            alert("Error: " + err + ".");
+        }
+
         return arrayToDrawIn;
     }
     HandlerAPI.removeFiguresFromArray=function removeFiguresFromArray(arrayToDrawIn){
 
         var generatedFiguresSelectTag = document.getElementById("generated-figures");
         var selectedValue = generatedFiguresSelectTag.options[generatedFiguresSelectTag.selectedIndex];
-        if (selectedValue.selectedIndex!=-1){
+        if (selectedValue.value!=-1){
             arrayToDrawIn.splice(parseFloat(selectedValue.value),1);
         }
 
 
         return arrayToDrawIn;
     }
-    HandlerAPI.moveUpFiguresInArray=function changeFiguresInArray(arrayToDrawIn){
+    HandlerAPI.moveUpFiguresInArray=function moveUpFiguresInArray(arrayToDrawIn){
 
         var generatedFiguresSelectTag = document.getElementById("generated-figures");
         var selectedValue = generatedFiguresSelectTag.options[generatedFiguresSelectTag.selectedIndex];
-        if (selectedValue.selectedIndex!=-1||parseFloat(selectedValue.value>0)){
-            var b = arrayToDrawIn[parseFloat(selectedValue.value)];
+        if (typeof selectedValue.value!=='undefined'&&parseFloat(selectedValue.value)>0){
+            var elementToMoveUp=arrayToDrawIn[parseFloat(selectedValue.value)];
+            var elementToMoveDown=arrayToDrawIn[parseFloat(selectedValue.value)-1];
+            var temp=elementToMoveUp;
             arrayToDrawIn[parseFloat(selectedValue.value)] = arrayToDrawIn[parseFloat(selectedValue.value)-1];
-            arrayToDrawIn[parseFloat(selectedValue.value)-1] = b;
+            arrayToDrawIn[parseFloat(selectedValue.value)-1] = temp;
+
+        }
+
+
+        return arrayToDrawIn;
+    }
+    HandlerAPI.moveDownFiguresInArray=function changeFiguresInArray(arrayToDrawIn){
+
+        var generatedFiguresSelectTag = document.getElementById("generated-figures");
+        var selectedValue = generatedFiguresSelectTag.options[generatedFiguresSelectTag.selectedIndex];
+        if (typeof selectedValue.value!=='undefined'&&parseFloat(selectedValue.value)!==(arrayToDrawIn.length-1)){
+            var b = arrayToDrawIn[parseFloat(selectedValue.value)+1];
+            arrayToDrawIn[parseFloat(selectedValue.value)+1] = arrayToDrawIn[parseFloat(selectedValue.value)];
+            arrayToDrawIn[parseFloat(selectedValue.value)] = b;
 
         }
 
