@@ -9,7 +9,7 @@ input{
     border: 1px solid black;
     width: 29%;
     float: left;
-    height: 200px;
+    height: 250px;
 }
 #log{
     border: 1px solid black;
@@ -17,7 +17,7 @@ input{
     float: left;
     padding-left: 0;
     padding-right: 0;
-    height: 200px;
+    height: 250px;
 }
 label{
     display: block;
