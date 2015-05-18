@@ -11,6 +11,7 @@ var formsSubmitted=[];
         var form1=this._form;
 
     }
+
     HandlerAPI.addFiguresInArray=function addFiguresInArray(formsSubmitted,arrayToDrawIn){
         var formToCreateShapeFrom=formsSubmitted[formsSubmitted.length-1];
         try{
@@ -53,9 +54,8 @@ var formsSubmitted=[];
             }
         }
         catch(err) {
-            alert("Error: " + err + ".");
+            alert(err + ".");
         }
-
         return arrayToDrawIn;
     }
     HandlerAPI.removeFiguresFromArray=function removeFiguresFromArray(arrayToDrawIn){
@@ -65,8 +65,6 @@ var formsSubmitted=[];
         if (selectedValue.value!=-1){
             arrayToDrawIn.splice(parseFloat(selectedValue.value),1);
         }
-
-
         return arrayToDrawIn;
     }
     HandlerAPI.moveUpFiguresInArray=function moveUpFiguresInArray(arrayToDrawIn){
@@ -82,7 +80,6 @@ var formsSubmitted=[];
 
         }
 
-
         return arrayToDrawIn;
     }
     HandlerAPI.moveDownFiguresInArray=function changeFiguresInArray(arrayToDrawIn){
@@ -95,7 +92,6 @@ var formsSubmitted=[];
             arrayToDrawIn[parseFloat(selectedValue.value)] = b;
 
         }
-
 
         return arrayToDrawIn;
     }
@@ -185,8 +181,6 @@ var formsSubmitted=[];
             var figureType = document.getElementById("geometric-shape").value
 
             formsSubmitted.push(new shapeElementsParser.ProcessedForm(pointAx,pointAy,pointBx,pointBy,pointCx,pointCy,radius,figureColor,width,height,figureType));
-
-
         }
 
     }

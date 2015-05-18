@@ -1,0 +1,24 @@
+input{
+    width: 200px;
+    display: block;
+}
+#generated-figures{
+    height: 100%
+}
+#textInputs{
+    border: 1px solid black;
+    width: 29%;
+    float: left;
+    height: 200px;
+}
+#log{
+    border: 1px solid black;
+    width: 70%;
+    float: left;
+    padding-left: 0;
+    padding-right: 0;
+    height: 200px;
+}
+label{
+    display: block;
+}
