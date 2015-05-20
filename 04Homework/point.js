@@ -9,6 +9,7 @@ var taskList = taskList||{};
         init: function(x,y) {
             this._x = x;
             this._y = y;
+            return this;
 
         },
         toString: function() {
@@ -16,4 +17,5 @@ var taskList = taskList||{};
         }
     }
     taskList.point=point;
+    return taskList.point;
 }(taskList));

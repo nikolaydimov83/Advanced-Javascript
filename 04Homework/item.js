@@ -6,10 +6,10 @@ var taskList = taskList||{};
 
 (function(taskList){
     var item = taskList.container.extend({
-        init: function init(heading, width,heigth,startPoint,arrayOfChildren,status,parentID) {
-            this._super.init.call(heading, width,heigth,startPoint,arrayOfChildren);
+        init: function init(heading, width,heigth,startPoint,status,parentID) {
+            this._super.init.call(heading, width,heigth,startPoint,[]);
             this._status=status;
-            this._arrayOfChildren=null;
+            this._arrayOfChildren=[];
             this._parentID=parentID;
             return this;
         },
@@ -41,7 +41,11 @@ var taskList = taskList||{};
                 this._arrayOfChildren[i].addToDOM();
 
             }
+        },
+        addSection:function(heading){
+            var itemToAdd=new taskList.segment.init(heading,'5px','5px',point.init(5,5),null);
+            this._arrayOfChildren.push(itemToAdd);
         }
     });
-    taskList.segment=item;
+    taskList.item=item;
 }(taskList));

@@ -10,7 +10,6 @@ var taskList = taskList||{};
     var segment = taskList.container.extend({
         init: function init(heading, width,heigth,startPoint,arrayOfChildren) {
             this._super.init.call(heading, width,heigth,startPoint,arrayOfChildren);
-            this.grade = grade;
             return this;
         },
         addToDOM: function(){
@@ -37,6 +36,12 @@ var taskList = taskList||{};
                 this._arrayOfChildren[i].addToDOM();
 
             }
+        },
+        addSection:function(container){
+
+            container._arrayOfChildren.push(this);
+            this.addToDOM();
+
         }
     });
     taskList.segment=segment;

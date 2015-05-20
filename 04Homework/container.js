@@ -1,5 +1,5 @@
 /**
- * Created by User on 19.5.2015 ã..
+ * Created by User on 19.5.2015 ï¿½..
  */
 Object.prototype.extend = function(properties) {
     function f() {};
@@ -21,6 +21,10 @@ var taskList = taskList||{};
             this._heigth = heigth;
             this._startPoint = startPoint;
             this._arrayOfChildren = arrayOfChildren;
+            if (typeof this._arrayOfChildren==='undefined'){
+                this._arrayOfChildren=[];
+            }
+            return this
         },
         toString: function() {
             return this._heading + " " + this._width+" "+ this._heigth+" "+this._startPoint+" "+this._arrayOfChildren;
@@ -34,7 +38,16 @@ var taskList = taskList||{};
             containerToCreate.style.position='relative';
             containerToCreate.style.left=this._startPoint._x;
             containerToCreate.style.top=this._startPoint._y;
-            document.appendChild(containerToCreate);
+            document.body.appendChild(containerToCreate);
+            var containerInput=document.createElement('input');
+            containerInput.id='container-input';
+            containerInput.type='text';
+            document.getElementById('container').appendChild(containerInput);
+            var containerButton = document.createElement('button');
+            containerButton.innerHTML='Add Section';
+            containerButton.id='addSection'+this._heading;
+            document.getElementById('container').appendChild(containerButton);
+
             for (var i = 0; i < this._arrayOfChildren.length; i++) {
                 this._arrayOfChildren[i].addToDOM();
 
