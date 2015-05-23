@@ -35,7 +35,7 @@ var formsSubmitted=[];
                 arrayToDrawIn.push(figure);
                 break;
             case "point":
-                //to be implemented
+                //to be implemented;
                 break;
             case "rectangle":
                 pointA=new shapes.Point(formToCreateShapeFrom._pointAx,formToCreateShapeFrom._pointAy);

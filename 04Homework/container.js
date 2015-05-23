@@ -53,6 +53,7 @@ var taskList = taskList||{};
          containerInput.id=this.getClassName()+this._heading+'Input';
          containerInput.type='text';
          document.getElementById(this.getClassName()+this._heading).appendChild(containerInput);
+         console.log("Hello")
 
 
          for (var i = 0; i < this._arrayOfChildren.length; i++) {

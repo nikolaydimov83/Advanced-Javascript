@@ -10,6 +10,7 @@ var shapes = shapes||{};
         checkFunctions.isPoint(pointA);
         this._pointA=pointA;
         this._color=color;
+        this._=this.constructor.name;
     }
 
     Shape.prototype = {
